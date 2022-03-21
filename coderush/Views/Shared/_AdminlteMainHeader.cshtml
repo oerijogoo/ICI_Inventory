@@ -1,0 +1,176 @@
+﻿@model coderush.Models.ApplicationUser
+@inject coderush.Data.ApplicationDbContext Context
+
+@{
+    UserProfile profile = Context.UserProfile.SingleOrDefault(x => x.ApplicationUserId.Equals(Model.Id));
+}
+
+<header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>IT</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">ICI PHARMACY </span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-file-document-box"></i>
+                        <span class="count">7</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                        <div class="dropdown-item">
+                            <p class="mb-0 font-weight-normal float-left">
+                                You have 7 unread mails
+                            </p>
+                            <span class="badge badge-info badge-pill float-right">View all</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <img src="~/images/faces/face4.jpg" alt="image" class="profile-pic">
+                            </div>
+                            <div class="preview-item-content flex-grow">
+                                <h6 class="preview-subject ellipsis font-weight-medium text-dark">
+                                    David Grey
+                                    <span class="float-right font-weight-light small-text">1 Minutes ago</span>
+                                </h6>
+                                <p class="font-weight-light small-text">
+                                    The meeting is cancelled
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <img src="~/images/faces/face2.jpg" alt="image" class="profile-pic">
+                            </div>
+                            <div class="preview-item-content flex-grow">
+                                <h6 class="preview-subject ellipsis font-weight-medium text-dark">
+                                    Tim Cook
+                                    <span class="float-right font-weight-light small-text">15 Minutes ago</span>
+                                </h6>
+                                <p class="font-weight-light small-text">
+                                    New product launch
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <img src="~/images/faces/face3.jpg" alt="image" class="profile-pic">
+                            </div>
+                            <div class="preview-item-content flex-grow">
+                                <h6 class="preview-subject ellipsis font-weight-medium text-dark">
+                                    Johnson
+                                    <span class="float-right font-weight-light small-text">18 Minutes ago</span>
+                                </h6>
+                                <p class="font-weight-light small-text">
+                                    Upcoming board meeting
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-bell"></i>
+                        <span class="count" style="color:red">STOCK !</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                        <a class="dropdown-item">
+                            <p class="mb-0 font-weight-normal float-left">
+                                You have 4 new notifications
+                            </p>
+                            <span class="badge badge-pill badge-warning float-right">View all</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-success">
+                                    <i class="mdi mdi-alert-circle-outline mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
+                                <p class="font-weight-light small-text">
+                                    Just now
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-warning">
+                                    <i class="mdi mdi-comment-text-outline mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-medium text-dark">Settings</h6>
+                                <p class="font-weight-light small-text">
+                                    Private message
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-info">
+                                    <i class="mdi mdi-email-outline mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-medium text-dark">New user registration</h6>
+                                <p class="font-weight-light small-text">
+                                    2 days ago
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                @if (Model != null)
+                {
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="@profile.ProfilePicture" class="user-image profilePicture" alt="User Image">
+                            <span class="hidden-xs">@Model.Email</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="@profile.ProfilePicture" class="img-circle profilePicture" alt="User Image">
+                                <p>
+                                    @Model.Email
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="@Url.Action("UserProfile", "UserRole")" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-default btn-flat">Sign out</button>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
+                }
+
+
+            </ul>
+        </div>
+    </nav>
+</header>
